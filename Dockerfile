@@ -1,6 +1,6 @@
 # Koristimo Node.js sliku za buildanje Vue aplikacije
-#FROM balenalib/raspberry-pi-alpine-node:latest
-FROM node:alpine
+FROM balenalib/raspberry-pi-alpine-node:latest
+# FROM node:alpine
 
 # Postavljanje radnog direktorija unutar kontejnera
 WORKDIR /app
