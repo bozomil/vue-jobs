@@ -1,23 +1,13 @@
-version: '3'
+version: '3.8'
+
 services:
   vue-app:
     build:
       context: .
-    networks:
-      - app-network  # Povezivanje Vue aplikacije s Nginx mrežom
-    expose:
-      - "3000"  # Izlažemo port za internu komunikaciju unutar mreže
-
-  json-server:
-    image: json-server:latest
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Vue aplikacija
+      - "5000:5000" # JSON-server
     volumes:
-      - ./jobs.json:/jobs.json  # Ako koristite svoj db.json
-    command: json-server --watch /jobs.json --port 5000  # Pokreni json-server na portu 5000
-    networks:
-      - app-network  # Povezivanje json-servera s Nginx mrežom
-    expose:
-      - "5000"  # Samo za internu komunikaciju unutar mreže
-
-networks:
-  app-network:
-    driver: bridge
+      - ./src/jobs.json:/app/src/jobs.json # Montiramo jobs.json kao volumen
+    restart: always
