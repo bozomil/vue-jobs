@@ -9,11 +9,14 @@ WORKDIR /app
 # Kopiranje package.json i package-lock.json
 COPY package*.json ./
 
+# install project dependencies
+RUN npm install
+
 # Kopiranje svih drugih datoteka u kontejner
 COPY . .
 
 # Build
-RUN npm run-script build
+RUN npm run build
 
 #Stage 2. Setup finale container
 FROM node:20.18-alpine3.19
