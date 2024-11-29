@@ -2,12 +2,12 @@ version: '3.3'
 
 services:
   vue-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "3011:3011" # Vue aplikacija
       - "5000:5000" # JSON-server
     volumes:
-      - ./src/jobs.json:/app/src/jobs.json # Montiramo jobs.json kao volumen
-    restart: always
+      - jobs-data:/app/src # Montiramo jobs.json kao volumen
+    
+volumes:
+  jobs-data:    
