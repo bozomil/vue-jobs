@@ -18,4 +18,4 @@ RUN npm run build
 
 # Ovdje ne trebamo Nginx jer će Nginx biti upravljan u drugom kontejneru
 # Jednostavno izlažemo statičke datoteke iz builda
-CMD ["npm", "run", "serve"]  # Pokreni Vue aplikaciju u razvoju (ako se koristi dev server)
+CMD ["npm run dev", "npm run server"]  # Pokreni Vue aplikaciju u razvoju (ako se koristi dev server)
