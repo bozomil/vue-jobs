@@ -13,7 +13,7 @@ COPY package*.json ./
 COPY . .
 
 # Build
-RUN npm build
+RUN npm run-script build
 
 #Stage 2. Setup finale container
 FROM balenalib/raspberry-pi-alpine-node:latest
