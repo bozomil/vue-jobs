@@ -1,7 +1,7 @@
 # Stage 1. Build the Vue.js app
 # Base image
-FROM balenalib/raspberry-pi-alpine-node:latest as build-stage
-# FROM node:alpine
+#FROM balenalib/raspberry-pi-alpine-node:latest as build-stage
+FROM node:16-alpine as build-stage
 
 # Postavljanje radnog direktorija unutar kontejnera
 WORKDIR /app
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run-script build
 
 #Stage 2. Setup finale container
-FROM balenalib/raspberry-pi-alpine-node:latest
+FROM node:16-alpine
 WORKDIR /app
 
 #install json-server globally
@@ -24,6 +24,8 @@ RUN npm install -g json-server
 
 # copy the build output from the build stage
 COPY --from=build-stage /app/dist/ /app/dist/
+
+COPY src/jobs.json /app/src/jobs.json
 
 #install http-server
 RUN npm install -g http-server
