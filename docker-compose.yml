@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3011:3011" # Vue aplikacija
-      - "5011:5011" # JSON-server
+      - "3011:3000" # Vue aplikacija
+      - "5011:5000" # JSON-server
     volumes:
       - ./src/jobs.json:/app/src/jobs.json # Montiramo jobs.json kao volumen
     restart: always
