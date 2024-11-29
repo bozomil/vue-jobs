@@ -1,5 +1,5 @@
 # Koristimo Node.js sliku za buildanje Vue aplikacije
-FROM node:18-alpine as build
+FROM arm32v7/node:alpine as build
 
 # Postavljanje radnog direktorija unutar kontejnera
 WORKDIR /app
