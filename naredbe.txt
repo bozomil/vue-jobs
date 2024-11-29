@@ -1,3 +1,2 @@
-docker volume create jobs-data
-docker build -t vue-json-app .
-docker run -p 3011:3011 -p 5000:5000 -v jobs-data:/app/src vue-json-app
+docker build -t vue-jobs .
+docker run -p 3011:3011 -p vue-jobs
