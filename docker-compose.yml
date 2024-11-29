@@ -2,11 +2,9 @@ version: '3.3'
 
 services:
   vue-jobs:
-    build: .
+    build:
+      context: .
     ports:
       - "3011:3011" # Vue.js aplikacija
-      - "5000:5000" # json-server aplikacija
     volumes:
-      - ./src/jobs.json:/app/src/jobs.json
-    environment:
-      NODE_ENV: development
+      - .:/app 
