@@ -22,4 +22,5 @@ EXPOSE 3011 5000
 
 # Defaultna komanda za pokretanje Vue aplikacije i JSON-servera
 #CMD ["npm run server", "npm run dev"]
-CMD ["npm run dev"]
+#CMD ["npm run ser"]
+CMD ["npm", "run", "dev"]
