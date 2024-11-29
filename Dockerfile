@@ -20,4 +20,4 @@ RUN npm install -g concurrently
 EXPOSE 3011 5000
 
 # Defaultna komanda za pokretanje Vue aplikacije i JSON-servera
-CMD ["concurrently", "npm run dev", "npm run server"]
+CMD ["concurrently", "npm run server", "npm run dev"]
