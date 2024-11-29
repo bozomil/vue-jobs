@@ -14,7 +14,7 @@ export default defineConfig({
     port: 3011,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'http://ossetup.com:5000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
