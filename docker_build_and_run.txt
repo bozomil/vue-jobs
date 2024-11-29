@@ -1,0 +1,2 @@
+docker build -t vue-jobs .
+docker run -p 3011:3011 vue-jobs
