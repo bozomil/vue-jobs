@@ -13,12 +13,11 @@ RUN npm install
 # Kopiranje svih drugih datoteka u kontejner
 COPY . .
 
-# Izlažemo portove za Vue aplikaciju i JSON-server
+# Instaliramo concurrently za paralelno pokretanje skripti
+RUN npm install -g concurrently
+
+# Izlažemo potrebne portove
 EXPOSE 3011 5000
 
-# Gradnja Vue aplikacije
-RUN npm run build
-
-# Ovdje ne trebamo Nginx jer će Nginx biti upravljan u drugom kontejneru
-# Jednostavno izlažemo statičke datoteke iz builda
-CMD ["npm", "run", "server"]  # Pokreni Vue aplikaciju u razvoju (ako se koristi dev server)
+# Defaultna komanda za pokretanje Vue aplikacije i JSON-servera
+CMD ["concurrently", "npm run dev", "npm run server"]
