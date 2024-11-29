@@ -17,7 +17,7 @@ COPY . .
 EXPOSE 3000 5000
 
 # Gradnja Vue aplikacije
-# RUN npm run build
+RUN npm run build
 
 # Ovdje ne trebamo Nginx jer će Nginx biti upravljan u drugom kontejneru
 # Jednostavno izlažemo statičke datoteke iz builda
