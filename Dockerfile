@@ -1,5 +1,6 @@
-# Koristimo Node.js sliku za buildanje Vue aplikacije
-FROM balenalib/raspberry-pi-alpine-node:latest
+# Stage 1. Build the Vue.js app
+# Base image
+FROM balenalib/raspberry-pi-alpine-node:latest as build-stage
 # FROM node:alpine
 
 # Postavljanje radnog direktorija unutar kontejnera
@@ -8,19 +9,28 @@ WORKDIR /app
 # Kopiranje package.json i package-lock.json
 COPY package*.json ./
 
-# Instaliranje zavisnosti
-RUN npm install
-
 # Kopiranje svih drugih datoteka u kontejner
 COPY . .
 
-# Instaliramo concurrently za paralelno pokretanje skripti
-# RUN npm install -g concurrently
+# Build
+RUN npm build
+
+#Stage 2. Setup finale container
+FROM balenalib/raspberry-pi-alpine-node:latest
+WORKDIR /app
+
+#install json-server globally
+RUN npm install -g json-server
+
+# copy the build output from the build stage
+COPY --from=build-stage /app/dist/ /app/dist/
+
+#install http-server
+RUN npm install -g http-server
 
 # Izlažemo potrebne portove
-EXPOSE 3011 5000
+EXPOSE 3011
+EXPOSE 5000
 
-# Defaultna komanda za pokretanje Vue aplikacije i JSON-servera
-#CMD ["npm run server", "npm run dev"]
-#CMD ["npm run ser"]
-CMD ["npm", "run", "dev", "server"]
+# start both service using simple script
+CMD sh -c "http-server /app/dist - p 3011 & json-server --watch /app/src/jobs.json --port 5000"
