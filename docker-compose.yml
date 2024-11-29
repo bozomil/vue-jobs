@@ -6,5 +6,6 @@ services:
       context: .
     ports:
       - "3011:3011" # Vue.js aplikacija
+      - "5000:5000" # Vue.js aplikacija
     volumes:
       - .:/app 

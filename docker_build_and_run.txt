@@ -1,2 +1,4 @@
 docker build -t vue-jobs .
-docker run -p 3011:3011 vue-jobs
+docker run --name vuejobs -p 3011:3011 vue-jobs
+docker run --name vampir -p 3012:3011 vue-jobs
+docker run --name tito -p 3013:3011 vue-jobs
