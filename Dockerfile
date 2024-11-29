@@ -14,10 +14,11 @@ RUN npm install
 COPY . .
 
 # Instaliramo concurrently za paralelno pokretanje skripti
-RUN npm install -g concurrently
+# RUN npm install -g concurrently
 
 # Izlažemo potrebne portove
 EXPOSE 3011 5000
 
 # Defaultna komanda za pokretanje Vue aplikacije i JSON-servera
-CMD ["concurrently", "npm run server", "npm run dev"]
+#CMD ["npm run server", "npm run dev"]
+CMD ["npm run dev"]
