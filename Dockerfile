@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Izlažemo portove za Vue aplikaciju i JSON-server
-EXPOSE 3000 5000
+EXPOSE 3011 5000
 
 # Gradnja Vue aplikacije
 RUN npm run build
