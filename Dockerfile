@@ -41,4 +41,4 @@ EXPOSE 5000
 # start both service using simple script
 # CMD sh -c "serve -s /app/dist -l 3011 & json-server --watch /app/src/jobs.json --port 5000"
 #CMD sh -c "serve -s /app/dist -l 3011 & json-server --watch /app/src/jobs.json --port 5000 --host 0.0.0.0 --cors"
-CMD sh -c "http-server /app/dist -p 3011 & json-server --watch /app/src/jobs.json --port 5000 --host 0.0.0.0 --cors"
+CMD sh -c "http-server /app/dist -p 3011 & json-server --watch /app/src/jobs.json --port 5000"
