@@ -32,10 +32,11 @@ COPY src/jobs.json /app/src/jobs.json
 
 #install http-server
 RUN npm install -g http-server
+RUN npm install -g serve
 
 # Izlažemo potrebne portove
 EXPOSE 3011
 EXPOSE 5000
 
 # start both service using simple script
-CMD sh -c "http-server /app/dist - p 3011 & json-server --watch /app/src/jobs.json --port 5000"
+CMD sh -c "serve -s /app/dist -l 3011 & json-server --watch /app/src/jobs.json --port 5000"
