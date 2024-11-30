@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:20.18-alpine3.19
 
 # Postavljamo radni direktorij na /app
 WORKDIR /app
