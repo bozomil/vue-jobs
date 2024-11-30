@@ -1,21 +1,19 @@
-# Stage 1. Build the Vue.js app
-# Base image
-#FROM balenalib/raspberry-pi-alpine-node:latest as build-stage
-FROM node:20.18-alpine3.19
-# Postavljanje radnog direktorija
+FROM node:14-alpine
+
+# Postavljamo radni direktorij na /app
 WORKDIR /app
 
-# Kopiranje package.json i package-lock.json
+# Kopiramo package*.json datoteke u radni direktorij
 COPY package*.json ./
 
-# install project dependencies
+# Instaliramo ovisnosti
 RUN npm install
 
-# Kopiranje svih drugih datoteka u kontejner
+# Kopiramo aplikacijski kod u radni direktorij
 COPY . .
 
-# start both service using simple script
-# CMD sh -c "serve -s /app/dist -l 3011 & json-server --watch /app/src/jobs.json --port 5000"
-# CMD sh -c "serve -s /app/dist -l 3011 & json-server --watch /app/src/jobs.json --port 5000 --host 0.0.0.0 --cors"
-# CMD ["sh", "-c", "json-server --watch /app/src/jobs.json --port 5000 & npm run dev -- --host & npm run server"]
-CMD ["sh", "-c", "npm run dev -- --host & npm run server"]
+# Pokrećemo json-server na portu 5000
+RUN npm run server --port 5000 &
+
+# Pokrećemo Vite aplikaciju na portu 3011
+CMD ["npm", "run", "dev"]

@@ -7,3 +7,8 @@ or
 docker run --name vuejobs -p 3011:3011 -p 5000:5000 vue-jobs
 docker run --name vampir -p 3012:3011 -p 5001:5000 vue-jobs
 docker run --name tito -p 3013:3011 -p 5001:5000 vue-jobs
+
+
+#
+docker-compose build // Ova naredba će izgraditi Docker sliku na temelju Dockerfile-a.
+docker-compose up // Ova naredba će pokrenuti container na temelju docker-compose.yaml datoteke.
