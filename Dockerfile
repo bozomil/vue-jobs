@@ -16,4 +16,4 @@ COPY . .
 RUN npm run server --port 5000 &
 
 # Pokrećemo Vite aplikaciju na portu 3011
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev -- --host"]

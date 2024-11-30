@@ -12,3 +12,23 @@ docker run --name tito -p 3013:3011 -p 5001:5000 vue-jobs
 #
 docker-compose build // Ova naredba će izgraditi Docker sliku na temelju Dockerfile-a.
 docker-compose up // Ova naredba će pokrenuti container na temelju docker-compose.yaml datoteke.
+
+
+Ova naredba će pokrenuti container na temelju docker-compose.yaml datoteke i bit će dostupan izvan containera.
+-d parametar znači "detached" ili "pozadinski režim". Compose će pokrenuti kontejnere u pozadini, bez prikaza izlaza ili grešaka u terminalu.
+Ovo omogućava da se kontejneri pokrenu bez blokiranja terminala, što je korisno kada se želi pokrenuti kontejneri u pozadini i nastaviti sa drugim zadacima.
+docker-compose up -d -p 3011:3011 
+
+Možete zaustaviti postojeći container u okviru Docker Compose projekta.
+docker-compose stop
+
+Ako želite obrisati postojeći container u okviru Docker Compose projekta.
+docker-compose down
+
+Ova naredba će zaustaviti postojeće kontejnere, obrisati ih i pokrenuti nove kontejnere na portu 3011.
+docker-compose up -d --force-recreate -p 3011:3011
+
+Alternativno, možete koristiti --build flag da biste ažurirali Docker sliku i ponovo kreirali sve kontejnere:
+docker-compose up -d --build -p 3011:3011 vue-jobs_app:latest
+
+
