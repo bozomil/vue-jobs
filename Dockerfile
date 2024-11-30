@@ -12,11 +12,9 @@ RUN npm install
 # Kopiramo aplikacijski kod u radni direktorij
 COPY . .
 
-EXPOSE 3011
-
 # Pokrećemo json-server na portu 5000
-RUN npm run server --port 5000 &
-RUN npm run dev --port 3011 &
+#RUN npm run server --port 5000 &
+#RUN npm run dev --port 3011 &
 
-# Pokrećemo Vite aplikaciju na portu 3011
-CMD ["npm", "run", "dev"]
+# start both service using simple script
+CMD ["sh", "-c", "npm run dev -- --host & npm run server"]
